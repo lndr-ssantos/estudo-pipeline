@@ -1,4 +1,8 @@
-﻿using GerenciamentoRestaurante.Infra.Data;
+﻿using GerenciamentoRestaurante.Domain.Interfaces.Repositories;
+using GerenciamentoRestaurante.Domain.Interfaces.Services;
+using GerenciamentoRestaurante.Domain.Services;
+using GerenciamentoRestaurante.Infra.Data;
+using GerenciamentoRestaurante.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,8 +15,24 @@ public static class IoCExtensions
     {
         var connectionString = configuration.GetConnectionString("DbConnection");
         var version = ServerVersion.Parse("8.0.28-mysql");
-        services.AddDbContext<Context>(options => options.UseMySql(connectionString, version, 
+        
+        services.AddDbContext<Context>(options => options.UseMySql(connectionString, version,
             x => x.MigrationsHistoryTable("_MigrationHistory")));
+
+        return services;
+    }
+
+    public static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddTransient<IPessoaService, PessoaService>();
+
+        return services;
+    }
+
+    public static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        services.AddTransient<IPessoaRepository, PessoaRepository>();
+        
         return services;
     }
 }

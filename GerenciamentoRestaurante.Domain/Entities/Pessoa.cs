@@ -1,12 +1,29 @@
-﻿using GerenciamentoRestaurante.Domain.Enums;
+﻿using GerenciamentoRestaurante.Domain.Dtos;
+using GerenciamentoRestaurante.Domain.Enums;
 
 namespace GerenciamentoRestaurante.Domain.Entities;
 
-public class Pessoa
+public class Pessoa : Entity<int, Pessoa>
 {
-    public int Id { get; set; }
+    public Pessoa()
+    {
+    }
+
+    public Pessoa(PessoaDto pessoaDto)
+    {
+        Nome = pessoaDto.Nome;
+        Tipo = pessoaDto.Tipo;
+        Usuario = new Usuario(pessoaDto.Usuario);
+    }
+
     public string Nome { get; set; }
     public TipoPessoaEnum Tipo { get; set; }
-    public Usuario Usuario { get; set; }
-    public ICollection<Pedido> Pedidos { get; set; }
+    public Usuario? Usuario { get; set; }
+    public ICollection<Pedido>? Pedidos { get; set; }
+
+    public void Atualizar(PessoaDto pessoaDto)
+    {
+        Nome = pessoaDto.Nome;
+        Tipo = pessoaDto.Tipo;
+    }
 }
