@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\GerenciamentoRestaurante.Shared\GerenciamentoRestaurante.Shared.csproj" />
+      <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="7.0.0-preview.1.22109.13" />
     </ItemGroup>
 
 </Project>

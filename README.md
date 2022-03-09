@@ -5,3 +5,6 @@ Projeto desenvolvido para estudo.
 # Comandos:
 ## Criar migration
 `dotnet ef migrations add [nome da migration] -s .\GerenciamentoRestaurante.Api\ -p .\GerenciamentoRestaurante.Infra\`
+
+## Atualizar banco de dados
+`dotnet ef database update -s .\GerenciamentoRestaurante.Api\ -p .\GerenciamentoRestaurante.Infra\`

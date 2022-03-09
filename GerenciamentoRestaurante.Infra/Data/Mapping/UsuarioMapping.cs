@@ -11,8 +11,9 @@ public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
         builder.HasKey(p => p.Id);
         builder.ToTable("Usuarios");
 
-        builder.Property(p => p.Login).HasMaxLength(6).IsRequired();
-        builder.Property(p => p.Senha).HasMaxLength(15).IsRequired();
+        builder.Property(p => p.Login).HasMaxLength(50).IsRequired();
+        builder.Property(p => p.Senha).HasMaxLength(50).IsRequired();
+        builder.Property(p => p.Salt).HasMaxLength(50).IsRequired();
         builder.Property(p => p.Ativo).IsRequired();
     }
 }
