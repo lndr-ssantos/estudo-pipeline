@@ -34,7 +34,7 @@ public class BaseRepository<TId, TEntity> : IBaseRepository<TId, TEntity>
         return await DbSet.ToListAsync();
     }
 
-    public async Task<TEntity?> ObterPorIdAsync(TId id)
+    public async Task<TEntity> ObterPorIdAsync(TId id)
     {
         return await DbSet.SingleOrDefaultAsync(e => e.Id.Equals(id));
     }

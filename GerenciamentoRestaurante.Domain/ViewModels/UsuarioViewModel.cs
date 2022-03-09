@@ -9,5 +9,5 @@ public class UsuarioViewModel
         Login = usuario.Login;
     }
 
-    public string? Login { get; set; }
+    public string Login { get; set; }
 }
