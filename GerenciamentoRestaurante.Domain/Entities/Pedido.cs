@@ -7,7 +7,7 @@ public class Pedido : Entity<int, Pedido>
     public DateTime? DataFim { get; set; }
     public decimal? Valor { get; set; }
     public decimal? ValorGorjeta { get; set; }
-    public Pessoa? Garcom { get; set; }
-    public ICollection<PedidoItem>? PedidoItens { get; set; }
+    public Pessoa Garcom { get; set; }
+    public ICollection<PedidoItem> PedidoItens { get; set; }
 
 }

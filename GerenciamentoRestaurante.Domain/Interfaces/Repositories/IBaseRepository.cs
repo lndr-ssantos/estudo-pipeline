@@ -10,7 +10,7 @@ public interface IBaseRepository<TId, TEntity>
     Task AdicionarLoteAsync(IEnumerable<TEntity> objs);
     Task AdicionarAsync(TEntity obj);
     Task<IEnumerable<TEntity>> ObterAsync();
-    Task<TEntity?> ObterPorIdAsync(TId id);
+    Task<TEntity> ObterPorIdAsync(TId id);
     void Remover(TEntity obj);
     void Atualizar(TEntity obj);
     Task SalvarAsync();

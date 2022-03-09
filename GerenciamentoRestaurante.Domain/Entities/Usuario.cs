@@ -19,7 +19,7 @@ public class Usuario : Entity<int, Usuario>
     public string Senha { get; set; }
     public string Salt { get; set; }
     public bool Ativo { get; set; }
-    public Pessoa? Pessoa { get; set; }
+    public Pessoa Pessoa { get; set; }
 
     public void AdicionarSenha(string senha, string salt)
     {
