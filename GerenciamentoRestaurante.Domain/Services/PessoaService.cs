@@ -74,6 +74,7 @@ public class PessoaService : IPessoaService
         }
         
         _pessoaRepository.Remover(pessoa);
+        await _pessoaRepository.SalvarAsync();
 
         return true;
     }
