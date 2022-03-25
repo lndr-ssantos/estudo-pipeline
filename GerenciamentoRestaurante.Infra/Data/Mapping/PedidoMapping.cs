@@ -15,6 +15,7 @@ public class PedidoMapping : IEntityTypeConfiguration<Pedido>
         builder.Property(p => p.ValorGorjeta).HasColumnType("decimal(5,2)");
         builder.Property(p => p.DataInicio).IsRequired();
         builder.Property(p => p.DataFim);
+        builder.Property(p => p.Mesa).HasMaxLength(2);
 
         builder.HasOne(pedido => pedido.Garcom)
             .WithMany(pessoa => pessoa.Pedidos)

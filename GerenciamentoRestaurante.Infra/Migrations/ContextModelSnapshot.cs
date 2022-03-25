@@ -61,6 +61,10 @@ namespace GerenciamentoRestaurante.Infra.Migrations
                     b.Property<int>("GarcomId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Mesa")
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)");
+
                     b.Property<decimal?>("Valor")
                         .HasColumnType("decimal(5,2)");
 

@@ -21,7 +21,7 @@ public class ItemCardapio : Entity<int, ItemCardapio>
     public string Descricao { get; set; }
     public decimal ValorUnidade { get; set; }
     public TipoItemCardapioEnum Tipo { get; set; }
-    public ICollection<PedidoItem> PedidoItens { get; set; }
+    public List<PedidoItem> PedidoItens { get; set; }
 
     public void Atualizar(ItemCardapioDto itemCardapioDto)
     {
