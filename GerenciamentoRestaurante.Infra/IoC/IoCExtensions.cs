@@ -26,6 +26,7 @@ public static class IoCExtensions
     {
         services.AddTransient<IPessoaService, PessoaService>();
         services.AddTransient<IItemCardapioService, ItemCardapioService>();
+        services.AddTransient<IPedidoService, PedidoService>();
 
         return services;
     }
@@ -34,6 +35,7 @@ public static class IoCExtensions
     {
         services.AddTransient<IPessoaRepository, PessoaRepository>();
         services.AddTransient<IItemCardapioRepository, ItemCardapioRepository>();
+        services.AddTransient<IPedidoRepository, PedidoRepository>();
         
         return services;
     }

@@ -19,7 +19,7 @@ public class Pessoa : Entity<int, Pessoa>
     public string Nome { get; set; }
     public TipoPessoaEnum Tipo { get; set; }
     public Usuario Usuario { get; set; }
-    public ICollection<Pedido> Pedidos { get; set; }
+    public List<Pedido> Pedidos { get; set; }
 
     public void Atualizar(PessoaDto pessoaDto)
     {

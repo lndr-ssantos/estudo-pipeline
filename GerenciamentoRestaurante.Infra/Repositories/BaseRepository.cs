@@ -29,7 +29,7 @@ public class BaseRepository<TId, TEntity> : IBaseRepository<TId, TEntity>
         await DbSet.AddAsync(obj);
     }
 
-    public async Task<IEnumerable<TEntity>> ObterAsync()
+    public virtual async Task<IEnumerable<TEntity>> ObterAsync()
     {
         return await DbSet.ToListAsync();
     }
