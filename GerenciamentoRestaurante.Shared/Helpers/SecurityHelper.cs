@@ -27,4 +27,12 @@ public static class SecurityHelper
 
         return Convert.ToBase64String(hashSenha);
     }
+    
+    public static (string senha, string salt) CriptografarSenha(string novaSenha)
+    {
+        var salt = GerarSalt();
+        var senha = HashSenha(novaSenha, salt);
+
+        return (senha, salt);
+    }
 }
