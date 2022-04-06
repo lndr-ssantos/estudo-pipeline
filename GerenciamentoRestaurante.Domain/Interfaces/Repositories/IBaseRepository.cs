@@ -1,5 +1,4 @@
-﻿using System.Linq.Expressions;
-using GerenciamentoRestaurante.Domain.Entities;
+﻿using GerenciamentoRestaurante.Domain.Entities;
 
 namespace GerenciamentoRestaurante.Domain.Interfaces.Repositories;
 

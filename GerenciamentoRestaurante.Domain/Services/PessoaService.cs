@@ -20,7 +20,8 @@ public class PessoaService : IPessoaService
     {
         var novaPessoa = new Pessoa(pessoaDto);
 
-        CriptografarSenha(pessoaDto.Usuario, novaPessoa.Usuario!);
+        var (senha, salt) = SecurityHelper.CriptografarSenha(pessoaDto.Usuario.Senha);
+        novaPessoa.Usuario.AdicionarSenha(senha, salt);
 
         await _pessoaRepository.AdicionarAsync(novaPessoa);
         await _pessoaRepository.SalvarAsync();
@@ -79,11 +80,16 @@ public class PessoaService : IPessoaService
         return true;
     }
 
-    private void CriptografarSenha(UsuarioDto usuarioDto, Usuario usuario)
+    public async Task AdicionarUsuarioPadraoSistema(PessoaDto pessoaDto)
     {
-        var salt = SecurityHelper.GerarSalt();
-        var senha = SecurityHelper.HashSenha(usuarioDto.Senha!, salt);
+        if (!await _pessoaRepository.VerificarSePessoaExiste(pessoaDto.Nome, pessoaDto.Tipo))
+        {
+            await Adicionar(pessoaDto);
+        }
+    }
 
-        usuario.AdicionarSenha(senha, salt);
+    public async Task AdministradorGarcomPadrao(PessoaDto pessoaDto)
+    {
+        throw new NotImplementedException();
     }
 }
