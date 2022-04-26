@@ -61,6 +61,10 @@ namespace GerenciamentoRestaurante.Infra.Migrations
                     b.Property<int>("GarcomId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Mesa")
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)");
+
                     b.Property<decimal?>("Valor")
                         .HasColumnType("decimal(5,2)");
 
@@ -80,9 +84,6 @@ namespace GerenciamentoRestaurante.Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<ushort>("Quantidade")
@@ -126,16 +127,21 @@ namespace GerenciamentoRestaurante.Infra.Migrations
 
                     b.Property<string>("Login")
                         .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("varchar(6)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("PessoaId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("varchar(15)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 
