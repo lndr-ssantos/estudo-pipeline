@@ -3,6 +3,7 @@ using GerenciamentoRestaurante.Domain.Entities;
 using GerenciamentoRestaurante.Domain.Interfaces.Repositories;
 using GerenciamentoRestaurante.Domain.Interfaces.Services;
 using GerenciamentoRestaurante.Domain.ViewModels;
+using GerenciamentoRestaurante.Shared.Exceptions;
 using GerenciamentoRestaurante.Shared.Helpers;
 
 namespace GerenciamentoRestaurante.Domain.Services;
@@ -35,7 +36,7 @@ public class PessoaService : IPessoaService
 
         if (pessoa == null)
         {
-            throw new Exception("Pessoa não encontrada"); //TODO Criar exception customizada
+            throw new BusinessException("Pessoa não encontrada");
         }
 
         pessoa.Atualizar(pessoaDto);
@@ -59,7 +60,7 @@ public class PessoaService : IPessoaService
         
         if (pessoa == null)
         {
-            throw new Exception("Pessoa não encontrada");
+            throw new BusinessException("Pessoa não encontrada");
         }
 
         return new PessoaViewModel(pessoa);
@@ -71,25 +72,12 @@ public class PessoaService : IPessoaService
         
         if (pessoa == null)
         {
-            throw new Exception("Pessoa não encontrada");
+            throw new BusinessException("Pessoa não encontrada");
         }
         
         _pessoaRepository.Remover(pessoa);
         await _pessoaRepository.SalvarAsync();
 
         return true;
-    }
-
-    public async Task AdicionarUsuarioPadraoSistema(PessoaDto pessoaDto)
-    {
-        if (!await _pessoaRepository.VerificarSePessoaExiste(pessoaDto.Nome, pessoaDto.Tipo))
-        {
-            await Adicionar(pessoaDto);
-        }
-    }
-
-    public async Task AdministradorGarcomPadrao(PessoaDto pessoaDto)
-    {
-        throw new NotImplementedException();
     }
 }

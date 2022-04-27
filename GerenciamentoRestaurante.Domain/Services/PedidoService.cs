@@ -3,6 +3,7 @@ using GerenciamentoRestaurante.Domain.Entities;
 using GerenciamentoRestaurante.Domain.Interfaces.Repositories;
 using GerenciamentoRestaurante.Domain.Interfaces.Services;
 using GerenciamentoRestaurante.Domain.ViewModels;
+using GerenciamentoRestaurante.Shared.Exceptions;
 
 namespace GerenciamentoRestaurante.Domain.Services;
 
@@ -40,7 +41,7 @@ public class PedidoService : IPedidoService
 
         if (itensCardapio.Count < pedidoDto.Itens.Count)
         {
-            throw new Exception("Algum item está incorreto");
+            throw new BusinessException("Algum item está incorreto");
         }
 
         var pedidoItens =
@@ -59,7 +60,7 @@ public class PedidoService : IPedidoService
 
         if (pedido == null)
         {
-            throw new Exception("Pedido não encontrado");
+            throw new BusinessException("Pedido não encontrado");
         }
 
         await AdicionarItens(pedidoDto, pedido);
@@ -83,7 +84,7 @@ public class PedidoService : IPedidoService
         
         if (pedido == null)
         {
-            throw new Exception("Pedido não encontrada");
+            throw new BusinessException("Pedido não encontrada");
         }
 
         return new PedidoViewModel(pedido);
@@ -95,7 +96,7 @@ public class PedidoService : IPedidoService
         
         if (pedido == null)
         {
-            throw new Exception("Pessoa não encontrada");
+            throw new BusinessException("Pessoa não encontrada");
         }
         
         _pedidoRepository.Remover(pedido);
