@@ -80,17 +80,4 @@ public class PessoaService : IPessoaService
 
         return true;
     }
-
-    public async Task AdicionarUsuarioPadraoSistema(PessoaDto pessoaDto)
-    {
-        if (!await _pessoaRepository.VerificarSePessoaExiste(pessoaDto.Nome, pessoaDto.Tipo))
-        {
-            await Adicionar(pessoaDto);
-        }
-    }
-
-    public async Task AdministradorGarcomPadrao(PessoaDto pessoaDto)
-    {
-        throw new NotImplementedException();
-    }
 }
