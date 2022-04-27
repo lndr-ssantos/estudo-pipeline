@@ -3,6 +3,7 @@ using GerenciamentoRestaurante.Domain.Entities;
 using GerenciamentoRestaurante.Domain.Interfaces.Repositories;
 using GerenciamentoRestaurante.Domain.Interfaces.Services;
 using GerenciamentoRestaurante.Domain.ViewModels;
+using GerenciamentoRestaurante.Shared.Exceptions;
 using GerenciamentoRestaurante.Shared.Helpers;
 
 namespace GerenciamentoRestaurante.Domain.Services;
@@ -26,7 +27,7 @@ public class AuthenticationService : IAuthenticationService
 
         if (senhaCriptografada != usuario.Senha)
         {
-            throw new Exception("Senha inválida");
+            throw new BusinessException("Senha inválida");
         }
 
         return _jwtService.GerarToken(usuario);
@@ -51,7 +52,7 @@ public class AuthenticationService : IAuthenticationService
 
         if (usuario == null)
         {
-            throw new Exception("Usuário não encontrado");
+            throw new BusinessException("Usuário não encontrado");
         }
 
         return usuario;

@@ -3,6 +3,7 @@ using GerenciamentoRestaurante.Domain.Entities;
 using GerenciamentoRestaurante.Domain.Interfaces.Repositories;
 using GerenciamentoRestaurante.Domain.Interfaces.Services;
 using GerenciamentoRestaurante.Domain.ViewModels;
+using GerenciamentoRestaurante.Shared.Exceptions;
 
 namespace GerenciamentoRestaurante.Domain.Services;
 
@@ -31,7 +32,7 @@ public class ItemCardapioService : IItemCardapioService
 
         if (itemCardapio == null)
         {
-            throw new Exception("Item Cardapio não encontrado");
+            throw new BusinessException("Item Cardapio não encontrado");
         }
 
         itemCardapio.Atualizar(itemCardapioDto);
@@ -55,7 +56,7 @@ public class ItemCardapioService : IItemCardapioService
 
         if (itemCardapio == null)
         {
-            throw new Exception("Item Cardapio não encontrado");
+            throw new BusinessException("Item Cardapio não encontrado");
         }
 
         return new ItemCardapioViewModel(itemCardapio);
@@ -67,7 +68,7 @@ public class ItemCardapioService : IItemCardapioService
 
         if (itemCardapio == null)
         {
-            throw new Exception("Item Cardapio não encontrado");
+            throw new BusinessException("Item Cardapio não encontrado");
         }
 
         _itemCardapioRepository.Remover(itemCardapio);

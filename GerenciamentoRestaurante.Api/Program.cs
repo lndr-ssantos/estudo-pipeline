@@ -1,4 +1,5 @@
 using GerenciamentoRestaurante.Infra.IoC;
+using GerenciamentoRestaurante.Infra.Middlewares;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +53,8 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gerenciamento Restaurante v1");
 });
+
+app.UseErrorHandler();
 
 app.UseHttpsRedirection();
 
